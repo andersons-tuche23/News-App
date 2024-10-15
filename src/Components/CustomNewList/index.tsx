@@ -8,6 +8,7 @@ import {
   CategoryFilterContainer,
 } from "./style";
 
+
 interface Article {
   title: string;
   description: string;
