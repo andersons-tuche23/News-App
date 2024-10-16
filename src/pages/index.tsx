@@ -1,6 +1,6 @@
 import React from 'react';
 import NewList from '../Components/CustomNewList/index';
-import { Title } from './styles'; 
+import { Title } from '../styles/styles'; 
 
 const HomePage: React.FC = () => {
     return (
