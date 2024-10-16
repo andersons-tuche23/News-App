@@ -20,6 +20,7 @@ const NewsList: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [category, setCategory] = useState<string>("general");
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getNews = async () => {
     const news = await fetchNews(category);
     setArticles(news);
@@ -27,7 +28,7 @@ const NewsList: React.FC = () => {
 
   useEffect(() => {
     getNews();
-  }, [category]);
+  }, [category, getNews]);
 
   return (
     <NewsListContainer>
