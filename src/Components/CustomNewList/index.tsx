@@ -8,19 +8,17 @@ import {
   CategoryFilterContainer,
 } from "./style";
 
-
 interface Article {
   title: string;
   description: string;
   url: string;
-  urlToImage?: string;
+  image?: string;
 }
 
 const NewsList: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [category, setCategory] = useState<string>("general");
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getNews = async () => {
     const news = await fetchNews(category);
     setArticles(news);
@@ -28,7 +26,7 @@ const NewsList: React.FC = () => {
 
   useEffect(() => {
     getNews();
-  }, [category, getNews]);
+  }, [category]);
 
   return (
     <NewsListContainer>
@@ -39,13 +37,13 @@ const NewsList: React.FC = () => {
         />
       </CategoryFilterContainer>
       <ArticlesContainer>
-        {articles.map((article, index) => (
+        {articles.map((article) => (
           <NewsItem
-            key={index}
+            key={article.url}
             title={article.title}
             description={article.description}
             url={article.url}
-            urlToImage={article.urlToImage}
+            urlToImage={article.image}
           />
         ))}
       </ArticlesContainer>
